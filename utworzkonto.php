@@ -36,7 +36,7 @@
             </div>
         </nav>
         <?php
-            @include './connect.php';
+            include './connect.php';
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
 
@@ -44,18 +44,19 @@
                 $hasloToInsert = mysqli_real_escape_string($conn, $haslo);
                 $emailToInsert = mysqli_real_escape_string($conn, $email);
 
-                $sql = "INSERT INTO informacje (login, haslo, `email`) VALUES ('$login', '$haslo', '$email')";
-
-                if ($conn->query($sql) === TRUE) {
+                $sql = "INSERT INTO informacje (login, haslo, `email`) VALUES (?, ?, ?)";
+                $query = $conn -> prepare($sql);
+                $query->bind_param("sss", $loginToInsert, $hasloToInsert, $emailToInsert);
+                
+                if ($query -> execute()) {
          
                     header('Location: index.php');
                     exit();
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
-                }
 
-                // Close connection
-                $conn->close();
+                    $conn->close();
+                }
             }
             ?>
 
@@ -100,34 +101,6 @@
             justify-content: center;
         }
         </style>
-    <!-- <script>
-        const videos = document.querySelectorAll('.thrailer');
-        let a = false;
-        videos.forEach((video, index) => {
-            const thrailerOff = video.querySelector('.thrailer--off');
-            const thrailerOn = video.querySelector('.thrailer--on');
-
-            video.addEventListener('mouseenter', () => {
-                    a = true;
-                    if (a == true){
-                        setTimeout(() => {
-                            thrailerOff.style = "display: none";
-                            thrailerOn.style = "display: flex";
-                            video.querySelector('iframe').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                        }, 1000)
-                    }
-            });
-            video.addEventListener('mouseleave', () => {
-                 a = false
-                 if (a == false){
-                setTimeout(() => {
-                    thrailerOff.style = "display: flex"
-                    thrailerOn.style = "display: none";
-                    video.querySelector('iframe').contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                }, 1000); }
-            });
-        });
-    </script> -->
-    <script src="./js/slider.js"></script>
+   
 </body>
 </html>
