@@ -46,10 +46,11 @@
                 
                 $loginToCheck = mysqli_real_escape_string($conn, $login);
                 $hasloToCheck = mysqli_real_escape_string($conn, $haslo);
-                
-                // Zapytanie SQL sprawdzające, czy dane istnieją w tabeli
-                $sql = "SELECT * FROM informacje WHERE login = '$loginToCheck' AND haslo = '$hasloToCheck'";
-                $result = $conn->query($sql);
+                $sql = "SELECT * FROM informacje WHERE login = ? AND haslo = ?";
+                $query = $conn -> prepare($sql);
+                $query->bind_param("ss", $loginToCheck, $hasloToCheck);
+                $query -> execute();
+                $result = $query->get_result();
                 
                 if ($result->num_rows > 0) {
                     header('Location: index.html');
@@ -58,7 +59,6 @@
                     $loginErrorMessage = "Nieprawidłowy login lub hasło";
                 }
                 
-                // Close connection
                 $conn->close();
             }
         ?>
