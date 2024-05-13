@@ -1,0 +1,160 @@
+main{
+    
+    color: white;
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+    padding: 30px;
+    .mainTop{
+        margin-top: 50px;
+        width: 100%;
+        height: 100%;
+        .continue{
+            margin-bottom: 20px;
+        }
+        .moviesTop{
+            display: flex;
+            column-gap: 10px;
+            .wwzMovie{     
+                .watchingProgress{
+                    display: flex;
+                    .watchingProgress--red{
+                        margin-left: 50px;
+                        height: 3px;
+                        width: 90px;
+                        background-color: red;
+                    }
+                    .watchingProgress--grey{
+    
+                        height: 3px;
+                        width: 100px;
+                        background-color: grey;
+                    }
+                }
+            }
+            .bozecialoMovie{     
+                .watchingProgress{
+                    display: flex;
+                    .watchingProgress--red{
+                        margin-left: 50px;
+                        height: 3px;
+                        width: 30px;
+                        background-color: red;
+                    }
+                    .watchingProgress--grey{
+    
+                        height: 3px;
+                        width: 150px;
+                        background-color: grey;
+                    }
+                }
+            }
+            .ShrekMovie{     
+                .watchingProgress{
+                    display: flex;
+                    .watchingProgress--red{
+                        margin-left: 50px;
+                        height: 3px;
+                        width: 160px;
+                        background-color: red;
+                    }
+                    .watchingProgress--grey{
+    
+                        height: 3px;
+                        width: 30px;
+                        background-color: grey;
+                    }
+                }
+            }
+            .nazachodzieMovie{     
+                .watchingProgress{
+                    display: flex;
+                    .watchingProgress--red{
+                        margin-left: 50px;
+                        height: 3px;
+                        width: 120px;
+                        background-color: red;
+                    }
+                    .watchingProgress--grey{
+    
+                        height: 3px;
+                        width: 70px;
+                        background-color: grey;
+                    }
+                }
+            }
+            .klausMovie{     
+                .watchingProgress{
+                    display: flex;
+                    .watchingProgress--red{
+                        margin-left: 50px;
+                        height: 3px;
+                        width: 0px;
+                        background-color: red;
+                    }
+                    .watchingProgress--grey{
+    
+                        height: 3px;
+                        width: 190px;
+                        background-color: grey;
+                    }
+                }
+            }
+        }
+    }
+    .mainCenter, .mainCenter_2, .mainBottom{
+        position: relative;
+        margin-top: 13px;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        max-width: 1845px;
+        .rightArrow{
+            
+            position: absolute;
+            z-index: 1;
+            top: 20%;
+            right: 0px;
+            padding: 12px;
+            background-color: transparent;
+            border: none;
+            transition: 1s;
+        }
+        .arrow-container {
+            display: flex;
+            justify-content: space-between; /* Adjust as needed */
+          }
+          
+          .rightArrow, .leftArrow {
+            // height: 168px;
+          }
+          
+        .rightArrow:hover{
+            background-color: red;
+        }
+        .leftArrow:hover{
+            background-color: red;
+        }
+        .leftArrow{
+            position: absolute;
+            z-index: 2;
+            top: 20%;
+            left: 0px;
+            padding: 12px;
+            background-color: transparent;
+            border: none;
+            transition: 1s;
+        }
+        // max-width: 1000px;
+        .myList{
+            margin-bottom: 10px;
+        }
+        .moviesCenter{
+            transition: 1s;
+            position: relative;
+            display: flex;
+            column-gap: 10px;
+            
+        }
+    }
+
+}
