@@ -1,0 +1,125 @@
+/* Resetowanie stylów dla wszystkich elementów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styl dla body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+/* Styl dla nagłówka */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+}
+
+/* Styl dla lewej części nawigacji */
+.navLeft ul {
+    list-style-type: none;
+}
+
+/* Styl dla przycisków */
+.button-red {
+    color: #fff;
+    background-color: red;
+    border: none;
+    padding: 9px 13px;
+    border-radius: 4%;
+    margin-right: 10px;
+}
+
+.button-transparent {
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid grey;
+    padding: 9px 13px;
+    border-radius: 4%;
+    margin-right: 10px;
+}
+
+/* Styl dla sekcji z główną treścią */
+.main {
+    padding: 20px 100px;
+}
+
+/* Styl dla sekcji z tłem */
+.background {
+    position: relative;
+}
+
+/* Styl dla obrazu tła */
+.imagebg {
+    background-image: url('./img/bozecialo.jpg');
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Styl dla informacji o filmie */
+.info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+/* Styl dla nagłówka filmu */
+.info h1 {
+    font-size: 30px;
+}
+
+/* Styl dla opisu filmu */
+.info p {
+    font-size: 20px;
+}
+
+/* Styl dla sekcji "Więcej Szczegółów" */
+.szczegoly {
+    margin-top: 50px;
+}
+
+/* Styl dla sekcji "Więcej Podobnych" */
+.wiecejPodobnych {
+    margin-top: 70px;
+    width: 100%;
+}
+
+/* Styl dla stopki */
+.footer {
+    margin-top: 1500px;
+    padding: 0 100px;
+}
+
+/* Styl dla koloru szarego */
+.grey {
+    color: grey;
+}
+
+/* Dodatkowe style można dodać w miarę potrzeb */
+/* Styl dla sekcji "Oscar" */
+.oscar {
+    color: grey;
+    margin-top: 75px;
+    font-size: 17px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.oscar p {
+    margin-left: 50px;
+}
