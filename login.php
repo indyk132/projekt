@@ -34,6 +34,7 @@
             </div>
         </nav>
         <?php
+        session_start();
             $loginErrorMessage = "";
             
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -51,7 +52,7 @@
                 $result = $query->get_result();
                 
                 if ($result->num_rows > 0) {
-                    header('Location: index.html');
+                    header('Location: index.php');
                     exit();
                 } else {
                     $loginErrorMessage = "Nieprawidłowy login lub hasło";

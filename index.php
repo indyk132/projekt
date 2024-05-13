@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./scss/main.css">
 </head>
 <body>
-    <div class="background">
+    <div class="background"> 
     </div>
     <nav>
         <div class="navLeft navItems flex">
