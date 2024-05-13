@@ -26,12 +26,12 @@
             <div class="navRight flex">
                 <ul class="navRight_list">
                     <span style="font-size: 15px;">TYSIĄCE FILMÓW, SERIALI I PROGRAMÓW &nbsp;</span>
-                    <button style=" color: white; background-color: red; border: none; padding: 9px 13px; border-radius: 4%; margin-right: 10px;">
-                        DOŁĄCZ TERAZ
-                    </button>
-                    <button style=" color: white; background-color: transparent; border: 1px solid grey; padding: 9px 13px; border-radius: 4%; margin-right: 10px;">
+                    
+                 <a href='login.php'> 
+                    <button style=" color: white; background-color: red; border: 1px solid grey;   padding: 9px 13px; border-radius: 4%; margin-right: 10px;">
                         ZALOGUJ SIĘ
                     </button>
+                </a>
                 </ul>
             </div>
         </nav>
@@ -54,7 +54,7 @@
                     
                     if ($query -> execute()) {
             
-                        header('Location: index.php');
+                        header('Location: login.php');
                         exit();
                     } else {
                         echo "Error: " . $sql . "<br>" . $conn->error;

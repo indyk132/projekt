@@ -29,9 +29,7 @@
                     <a href='./utworzkonto.php'> <button style=" color: white; background-color: red; border: none; padding: 9px 13px; border-radius: 4%; margin-right: 10px;">
                         DOŁĄCZ TERAZ
                     </button></a>
-                    <button style=" color: white; background-color: transparent; border: 1px solid grey; padding: 9px 13px; border-radius: 4%; margin-right: 10px;">
-                        ZALOGUJ SIĘ
-                    </button>
+                    
                 </ul>
             </div>
         </nav>
