@@ -35,41 +35,43 @@
                 </ul>
             </div>
         </nav>
+
         <?php
-            include './connect.php';
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                
+                include './connect.php';
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    
+                    $login = $_POST['login'];
+                    $haslo = $_POST['haslo'];
+                    $email = $_POST['email'];
 
-                $loginToInsert = mysqli_real_escape_string($conn, $login);
-                $hasloToInsert = mysqli_real_escape_string($conn, $haslo);
-                $emailToInsert = mysqli_real_escape_string($conn, $email);
+                    $loginToInsert = mysqli_real_escape_string($conn, $login);
+                    $hasloToInsert = mysqli_real_escape_string($conn, $haslo);
+                    $emailToInsert = mysqli_real_escape_string($conn, $email);
 
-                $sql = "INSERT INTO informacje (login, haslo, `email`) VALUES (?, ?, ?)";
-                $query = $conn -> prepare($sql);
-                $query->bind_param("sss", $loginToInsert, $hasloToInsert, $emailToInsert);
-                
-                if ($query -> execute()) {
-         
-                    header('Location: index.php');
-                    exit();
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
+                    $sql = "INSERT INTO informacje (login, haslo, `email`) VALUES (?, ?, ?)";
+                    $query = $conn -> prepare($sql);
+                    $query->bind_param("sss", $loginToInsert, $hasloToInsert, $emailToInsert);
+                    
+                    if ($query -> execute()) {
+            
+                        header('Location: index.php');
+                        exit();
+                    } else {
+                        echo "Error: " . $sql . "<br>" . $conn->error;
 
-                    $conn->close();
+                        $conn->close();
+                    }
                 }
-            }
             ?>
-
             <main>
-                <form action="" method="post">
+                <form action="utworzkonto.php" method="post">
                     <div class="inputs">
                         <label for="login">Login</label>
                         <input type="text" placeholder="Podaj Login" name="login">
                         <label for="haslo">Hasło</label>
                         <input type="password" placeholder="Podaj hasło" name="haslo">
                         <label for="email">e-mail</label>
-                        <input type="email" placeholder="Podaj email" name="email">
-                        
+                        <input type="text" placeholder="Podaj email" name="email">
                         <input type="submit" value="utwórz konto">
                     </div>
                 </form>
