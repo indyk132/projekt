@@ -6,9 +6,9 @@
     <link rel="icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2023.ico" type="image/icon type">
 
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./scss/navbar.css">
-    <link rel="stylesheet" href="./scss/main.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
     <div class="background"> 
@@ -229,6 +229,6 @@
             });
         });
     </script> -->
-    <script src="./js/slider.js"></script>
+    <!-- <script src="./js/slider.js"></script> -->
 </body>
 </html>
