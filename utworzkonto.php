@@ -7,7 +7,7 @@
 
     <title>Document</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
-    <link rel="stylesheet" href="./scss/navbar.css">
+    <link rel="stylesheet" href="./css/navbar.css">
     <!-- <link rel="stylesheet" href="./scss/main.css"> -->
 </head>
 <body style="color: white" >

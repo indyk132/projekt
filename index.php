@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
+    <?php
+        session_start();
+        if($_COOKIE['is_logged'] != 'logged'){
+            header("Location: ./login.php");
+            exit();
+        }
+    ?>
     <div class="background"> 
     </div>
     <nav>
@@ -31,19 +38,29 @@
             <ul class="navRight_list">
                 <li class="navRight_listitem"><input type="text" placeholder="       Szukaj"> <svg xmlns="http://www.w3.org/2000/svg" class=" szukaj icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg></li>
                 <li class="navRight_listitem"><svg xmlns="http://www.w3.org/2000/svg" class=" bell icon icon-tabler icon-tabler-bell-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.235 19c.865 0 1.322 1.024 .745 1.668a3.992 3.992 0 0 1 -2.98 1.332a3.992 3.992 0 0 1 -2.98 -1.332c-.552 -.616 -.158 -1.579 .634 -1.661l.11 -.006h4.471z" stroke-width="0" fill="currentColor" /><path d="M12 2c1.358 0 2.506 .903 2.875 2.141l.046 .171l.008 .043a8.013 8.013 0 0 1 4.024 6.069l.028 .287l.019 .289v2.931l.021 .136a3 3 0 0 0 1.143 1.847l.167 .117l.162 .099c.86 .487 .56 1.766 -.377 1.864l-.116 .006h-16c-1.028 0 -1.387 -1.364 -.493 -1.87a3 3 0 0 0 1.472 -2.063l.021 -.143l.001 -2.97a8 8 0 0 1 3.821 -6.454l.248 -.146l.01 -.043a3.003 3.003 0 0 1 2.562 -2.29l.182 -.017l.176 -.004z" stroke-width="0" fill="currentColor" /></svg></li>
-                <li class="navRight_listitem"><img src="./img/netflixuser.png" alt="netflixuser" width="30px"> <span>Stefan</span> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" stroke-width="0" fill="currentColor" /></svg></li>
+                <li class="navRight_listitem"><img src="./img/netflixuser.png" alt="netflixuser" width="30px"> 
+                <span>
+                    <?php
+                        echo $_GET['id'];
+                    ?>
+                    </span>
+                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 9c.852 0 1.297 .986 .783 1.623l-.076 .084l-6 6a1 1 0 0 1 -1.32 .083l-.094 -.083l-6 -6l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057v-.118l.005 -.058l.009 -.06l.01 -.052l.032 -.108l.027 -.067l.07 -.132l.065 -.09l.073 -.081l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01l.057 -.004l12.059 -.002z" stroke-width="0" fill="currentColor" /></svg></li>
                 <li class="navRight_listitem"></li>
             </ul>
         </div>
     </nav>
     <main>
         <div class="mainTop"> 
-            <p class="continue">Kontynuuj oglądanie dla Stefan</p>
+            <p class="continue">Kontynuuj oglądanie dla 
+                <?php
+                    echo $_GET['id'];
+                ?>
+            </p>
             <div class="moviesTop">
                 <a href="./wwz.html">
                     <div class="wwzMovie topMovies  thrailer">
                        <img class="thrailer--off" src="./img/worldwarZ.png" alt="wwz" width="300px">
-                       <iframe  class="thrailer--on" style="display: none;" width="300" height="200" src="https://www.youtube.com/embed/P2N1zXXpnVI?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                       
                        <div class="watchingProgress imgZ">
                            <div class="watchingProgress--red"></div>
                            <div class="watchingProgress--grey"></div>
@@ -52,7 +69,7 @@
                 </a>
                 <div class="bozecialoMovie topMovies thrailer">
                     <a href="bozecialo.html"> <img  class="thrailer--off" src="./img/bozecialo.jpg" alt="bozecialo" width="300px"></a>
-                    <iframe class="thrailer--on" width="300" height="200" src="https://www.youtube.com/embed/Y22lmaNA_Aw?si=txiOJAK2U7xaTYTE?autoplay=1" style="display: none;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                   
                     <div class="watchingProgress">
                         <div class="watchingProgress--red"></div>
                         <div class="watchingProgress--grey"></div>
@@ -60,7 +77,7 @@
                 </div>
                 <div class="ShrekMovie topMovies thrailer">
                     <img class="thrailer--off" src="./img/Shrek.png" alt="Shrek" width="300px">
-                    <iframe class="thrailer--on" width="300" height="200" style="display: none;" src="https://www.youtube.com/embed/CwXOrWvPBPk?si=sbmNioCz311ELmWO?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                   
                     <div class="watchingProgress">
                         <div class="watchingProgress--red"></div>
                         <div class="watchingProgress--grey"></div>
@@ -68,7 +85,7 @@
                 </div>
                 <div class="nazachodzieMovie topMovies thrailer">
                     <img class="thrailer--off" src="./img/nazachodzie.png" alt="nazachodziebezzmian" width="300px">
-                    <iframe  class="thrailer--on" width="300" height="200" style="display: none;" src="https://www.youtube.com/embed/Ae_9IHXMJ2c?si=pLfqPpfZjmzkxEVs?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    
                     <div class="watchingProgress">
                         <div class="watchingProgress--red"></div>
                         <div class="watchingProgress--grey"></div>
@@ -76,7 +93,7 @@
                 </div>
                 <div class="klausMovie topMovies thrailer">
                     <a href="klaus.html"> <img class="thrailer--off" src="./img/klaus.png" alt="klaus" width="300px"></a>
-                    <iframe class="thrailer--on" width="300" height="200" style="display: none;" src="https://www.youtube.com/embed/taE3PwurhYM?si=ead_NL0ehlYAX_HY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                   
                     <div class="watchingProgress">
                         <div class="watchingProgress--red"></div>
                         <div class="watchingProgress--grey"></div>
@@ -97,7 +114,7 @@
             <div class="moviesCenter">
                 <div class="spiritedaway topMovies thrailer">
                     <img class="thrailer--off" src="./img/spiritedaway.png" alt="spiritedaway" width="300px">
-                    <iframe class="thrailer--on" width="300" height="200" style="display: none;" src="https://www.youtube.com/embed/ByXuk9QqQkk?si=BxZzW9gC1J8yPAbj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    
                 </div>
                 <div class="ShrekMovie topMovies thrailer">
                     <img src="./img/Shrek.png" alt="Shrek" width="300px">
@@ -110,7 +127,7 @@
                 </div>
                 <div class="spiritedaway topMovies thrailer">
                     <img class="thrailer--off" src="./img/spiritedaway.png" alt="spiritedaway" width="300px">
-                    <iframe class="thrailer--on" width="300" height="200" style="display: none;" src="https://www.youtube.com/embed/ByXuk9QqQkk?si=BxZzW9gC1J8yPAbj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    
                 </div>
                 <div class="ShrekMovie topMovies thrailer">
                     <img src="./img/Shrek.png" alt="Shrek" width="300px">
@@ -134,7 +151,7 @@
             <div class="moviesCenter">
                 <div class="spiritedaway topMovies thrailer">
                     <img class="thrailer--off" src="./img/spiritedaway.png" alt="spiritedaway" width="300px">
-                    <iframe class="thrailer--on" width="300" height="200" style="display: none;" src="https://www.youtube.com/embed/ByXuk9QqQkk?si=BxZzW9gC1J8yPAbj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    
                 </div>
                 <div class="ShrekMovie topMovies thrailer">
                     <img src="./img/Shrek.png" alt="Shrek" width="300px">
@@ -147,7 +164,7 @@
                 </div>
                 <div class="spiritedaway topMovies thrailer">
                     <img class="thrailer--off" src="./img/spiritedaway.png" alt="spiritedaway" width="300px">
-                    <iframe class="thrailer--on" width="300" height="200" style="display: none;" src="https://www.youtube.com/embed/ByXuk9QqQkk?si=BxZzW9gC1J8yPAbj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                   
                 </div>
                 <div class="ShrekMovie topMovies thrailer">
                     <img src="./img/Shrek.png" alt="Shrek" width="300px">
@@ -171,7 +188,7 @@
             <div class="moviesCenter">
                 <div class="spiritedaway topMovies thrailer">
                     <img class="thrailer--off" src="./img/spiritedaway.png" alt="spiritedaway" width="300px">
-                    <iframe class="thrailer--on" width="300" height="200" style="display: none;" src="https://www.youtube.com/embed/ByXuk9QqQkk?si=BxZzW9gC1J8yPAbj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                   
                 </div>
                 <div class="ShrekMovie topMovies thrailer">
                     <img src="./img/Shrek.png" alt="Shrek" width="300px">
@@ -184,7 +201,7 @@
                 </div>
                 <div class="spiritedaway topMovies thrailer">
                     <img class="thrailer--off" src="./img/spiritedaway.png" alt="spiritedaway" width="300px">
-                    <iframe class="thrailer--on" width="300" height="200" style="display: none;" src="https://www.youtube.com/embed/ByXuk9QqQkk?si=BxZzW9gC1J8yPAbj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    
                 </div>
                 <div class="ShrekMovie topMovies thrailer">
                     <img src="./img/Shrek.png" alt="Shrek" width="300px">
@@ -229,6 +246,6 @@
             });
         });
     </script> -->
-    <!-- <script src="./js/slider.js"></script> -->
+    <script src="./js/slider.js"></script>
 </body>
 </html>
