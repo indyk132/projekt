@@ -54,6 +54,7 @@
                 
                 if ($result->num_rows > 0) {
                     setcookie('is_logged', 'logged', time() + (86400 * 30));
+                   
                     while ($row = $result -> fetch_assoc()){
                         header("Location: ./index.php?id={$row['login']}");
                         exit();
