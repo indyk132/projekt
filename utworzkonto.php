@@ -44,37 +44,30 @@
                     $login = $_POST['login'];
                     $haslo = $_POST['haslo'];
                     $email = $_POST['email'];
-
                     $loginToInsert = mysqli_real_escape_string($conn, $login);
                     $hasloToInsert = mysqli_real_escape_string($conn, $haslo);
                     $emailToInsert = mysqli_real_escape_string($conn, $email);
+                    $_SESSION['login'] = $loginToInsert;
+                    $_SESSION['haslo'] = $hasloToInsert;
+                    $_SESSION['email'] = $emailToInsert;
 
-                    $sql = "INSERT INTO informacje (login, haslo, `email`) VALUES (?, ?, ?)";
-                    $query = $conn -> prepare($sql);
-                    $query->bind_param("sss", $loginToInsert, $hasloToInsert, $emailToInsert);
                     
                     
-                    
-                    if ($query -> execute()) {
-                        $kod =  random_int(1000,9999); 
-                        $_SESSION['kod'] = $kod ;
-                        $to_email = $email;
-                        $subject = "Kod weryfikacji";
-                        $body = "Twój kod do rejestracji znajduje się tutaj: ".$kod;
-                        $headers = "From: StefanCompany sp. z o.o";
-                        if (mail($to_email, $subject, $body, $headers)) {
-                            echo "Email successfully sent to $to_email...";
-                            header('Location: verify.php');
-                            exit();
-                        } else {
-                            echo "Email sending failed...";
-                        }
+                    $kod =  random_int(1000,9999); 
+                    $_SESSION['kod'] = $kod ;
+                    $to_email = $email;
+                    $subject = "Kod weryfikacji";
+                    $body = "Twój kod do rejestracji znajduje się tutaj: ".$kod;
+                    $headers = "From: StefanCompany sp. z o.o";
+                    if (mail($to_email, $subject, $body, $headers)) {
+                        echo "Email successfully sent to $to_email...";
+                        header('Location: verify.php');
                         exit();
                     } else {
-                        echo "Error: " . $sql . "<br>" . $conn->error;
-
-                        $conn->close();
+                        echo "Email sending failed...";
                     }
+                    
+                    
                 }
             ?>
             <main>
