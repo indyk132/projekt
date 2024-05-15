@@ -53,7 +53,7 @@
         <div class="mainTop"> 
             <p class="continue">Kontynuuj oglądanie dla 
                 <?php
-                    echo $_GET['id'];
+                        echo $_GET['id'];
                 ?>
             </p>
             <div class="moviesTop">
