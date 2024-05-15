@@ -3,21 +3,57 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-.background{
-    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/ff5587c5-1052-47cf-974b-a97e3b4f0656/58cf4d07-feaf-487f-83ac-9d88a339b09b/PL-pl-20240506-popsignuptwoweeks-perspective_alpha_website_small.jpg');
-    z-index: 10;
-    height: 100%;
-
+.container {
+    padding: 0 100px;
 }
 nav {
     background-color: transparent;
+    z-index: 2;
 }
+
 .encourage{
+    color: white;
     height: 100%;
-    .encourage_container{
+    z-index: -1;
+    // width: 100%;
+}
+.encourage_container{
+    height: 100%;
+       
+} 
+.encourage_background{
+    height: 100%;
+    position: relative;
+            
+}
+.encourage_hero_background{
         height: 100%;
-        padding-top: 136;
-        padding-bottom: 48;
-    }
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+}
+.encourage_items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 306px;
+    // height: 100%;
+}
+.encourage_head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.encourage_head  h1{
+    font-size: 3rem;
+}
+.encourage_head  span{
+    font-size: 1.5rem;
+}
+main{
+    height: 100%;
 }
