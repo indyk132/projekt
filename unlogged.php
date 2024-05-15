@@ -20,17 +20,13 @@
 <body>
     <?php
         session_start();
-        if($_COOKIE['is_logged'] != 'logged'){
-            header("Location: ./login.php");
-            exit();
-        }
     ?>
     <section class="encourage">
                 <div class="encourage_container">
                     <div class="background"> 
+                        <img src="" alt="">
                         <div class="hero_backgroud">
                             <div class="encourage_items">
-
                                 <div class="encourage_head">
                                     <h1>
                                         Filmy, seriale i wiele więcej bez ograniczeń

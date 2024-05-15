@@ -13,9 +13,8 @@
 <body>
     <?php
         session_start();
-        if($_COOKIE['is_logged'] != 'logged'){
-            header("Location: ./login.php");
-            exit();
+        if(isset($_GET['id']) == false or $_COOKIE['is_logged'] != 'logged'){
+            header("Location: ./unlogged.php");
         }
     ?>
     <div class="background"> 

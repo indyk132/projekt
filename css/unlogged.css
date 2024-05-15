@@ -17,8 +17,7 @@ nav {
 .encourage {
   height: 100%;
 }
-
-.encourage_container {
+.encourage .encourage_container {
   height: 100%;
   padding-top: 136;
   padding-bottom: 48;

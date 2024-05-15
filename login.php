@@ -37,33 +37,41 @@
         <?php
         session_start();
             $loginErrorMessage = "";
-            
+            if(@$_COOKIE['is_logged'] == 'logged'){
+                header("Location: ./index.php?id={$_SESSION['id_login']}");
+                exit();
+            }
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $login = isset($_POST['login']) ? $_POST['login'] : null;
                 $haslo = isset($_POST['haslo']) ? $_POST['haslo'] : null;
-                $email = isset($_POST['email']) ? $_POST['email'] : null;
-                @include './connect.php';
+                if(isset($_POST['submit'])){
+
                 
-                $loginToCheck = mysqli_real_escape_string($conn, $login);
-                $hasloToCheck = mysqli_real_escape_string($conn, $haslo);
-                $sql = "SELECT * FROM informacje WHERE login = ? AND haslo = ?";
-                $query = $conn -> prepare($sql);
-                $query->bind_param("ss", $loginToCheck, $hasloToCheck);
-                $query -> execute();
-                $result = $query->get_result();
-                
-                if ($result->num_rows > 0) {
-                    setcookie('is_logged', 'logged', time() + (86400 * 30));
-                   
-                    while ($row = $result -> fetch_assoc()){
-                        header("Location: ./index.php?id={$row['login']}");
-                        exit();
+                    // $email = isset($_POST['email']) ? $_POST['email'] : null;
+                    @include './connect.php';
+                    
+                    $loginToCheck = mysqli_real_escape_string($conn, $login);
+                    $hasloToCheck = mysqli_real_escape_string($conn, $haslo);
+                    $sql = "SELECT * FROM informacje WHERE login = ? AND haslo = ?";
+                    $query = $conn -> prepare($sql);
+                    $query->bind_param("ss", $loginToCheck, $hasloToCheck);
+                    $query -> execute();
+                    $result = $query->get_result();
+                    
+                    if ($result->num_rows > 0) {
+                        setcookie('is_logged', 'logged', time() + (86400 * 30));
+                        header("Location: ./utworzkonto.php");
+                        while ($row = $result -> fetch_assoc()){
+                            $_SESSION['id_login'] = $row['login'];
+                            header("Location: ./index.php?id={$row['login']}");
+                            exit();
+                        }
+                    } else {
+                        $loginErrorMessage = "Nieprawidłowy login lub hasło";
                     }
-                } else {
-                    $loginErrorMessage = "Nieprawidłowy login lub hasło";
-                }
-                
-                $conn->close();
+                    
+                    $conn->close();
+                }   
             }
         ?>
 
@@ -77,7 +85,7 @@
                     </span>
                     <label for="haslo">Hasło</label>
                     <input type="password" placeholder="Podaj hasło" name="haslo">
-                    <input type="submit" value="zaloguj się" class="main_Button--login">
+                    <input type="submit" name="submit" value="zaloguj się" class="main_Button--login">
                 </div>
             </form>
         </main>
@@ -108,34 +116,6 @@
             justify-content: center;
         }
         </style>
-    <!-- <script>
-        const videos = document.querySelectorAll('.thrailer');
-        let a = false;
-        videos.forEach((video, index) => {
-            const thrailerOff = video.querySelector('.thrailer--off');
-            const thrailerOn = video.querySelector('.thrailer--on');
 
-            video.addEventListener('mouseenter', () => {
-                    a = true;
-                    if (a == true){
-                        setTimeout(() => {
-                            thrailerOff.style = "display: none";
-                            thrailerOn.style = "display: flex";
-                            video.querySelector('iframe').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                        }, 1000)
-                    }
-            });
-            video.addEventListener('mouseleave', () => {
-                 a = false
-                 if (a == false){
-                setTimeout(() => {
-                    thrailerOff.style = "display: flex"
-                    thrailerOn.style = "display: none";
-                    video.querySelector('iframe').contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                }, 1000); }
-            });
-        });
-    </script> -->
-    <script src="./js/slider.js"></script>
 </body>
 </html>
