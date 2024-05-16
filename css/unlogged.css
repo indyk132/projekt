@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: white;
 }
 
 .container {
@@ -21,6 +22,7 @@ nav {
 
 .encourage_container {
   height: 100%;
+  border-bottom: 3px solid rgb(35, 35, 35);
 }
 
 .encourage_background {
@@ -49,7 +51,7 @@ nav {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .encourage_head h1 {
@@ -62,4 +64,58 @@ nav {
 
 main {
   height: 100%;
+}
+
+.main_border {
+  width: 100%;
+  border-top: 9px solid rgb(35, 35, 35);
+}
+
+.main_item {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_item--right {
+  flex-direction: row-reverse;
+}
+
+.main_item_text h1 {
+  font-size: 45px;
+}
+
+.main_item_text span {
+  font-size: 20px;
+}
+
+.main_item--image .tv {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+.main_item--videoLeft {
+  z-index: -1;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 73%;
+  max-height: 54%;
+  top: 20.8%;
+  left: 13.65%;
+}
+
+.main_item--videoRight {
+  z-index: -1;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 49%;
+  max-height: 60%;
+  top: 19%;
+  left: 51%;
 }/*# sourceMappingURL=unlogged.css.map */

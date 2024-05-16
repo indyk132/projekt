@@ -13,7 +13,7 @@
     <?php
         session_start();
     ?>
-    <nav>
+    <nav style="position: static;">
         <div class="navLeft navItems flex">
             <ul class="navLeft_list  flex">
                 
@@ -66,9 +66,75 @@
     </section>
     <main>
         <div class="main_background">
-            <div class="main_container container">
+            <div class="main_container ">
                 <div class="main_items">
-                    
+                    <div class="main_border"></div>
+                    <div class="main_item main_item--left container">
+                        <div class=" main_item_text">
+                            <h1>
+                                Oglądaj na telewizorze
+                            </h1>
+                            <span>
+                                Oglądaj na telewizorach Smart TV, konsolach PlayStation i Xbox, odtwarzaczach Chromecast, Apple TV oraz Blu-ray i nie tylko.
+                            </span>
+                        </div>
+                        <div class="main_item--image">
+                            <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png" alt="">
+                            <div class="main_item--videoRight">
+                                <video src="./img/netflixTVideo.m4v" alt="" width="474px" height="280px" autoplay loop muted></video>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_border"></div>
+                    <div class="main_item main_item--right container">
+                        <div class=" main_item_text">
+                            <h1>
+                                Pobierz ulubione tytuły i oglądaj offline
+                            </h1>
+                            <span>
+                                Zapisz ulubione tytuły, aby zawsze mieć coś do obejrzenia.
+                            </span>
+                        </div>
+                        <div class="main_item--image">
+                            <img class="tv" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png" alt="">
+                            <div class="main_item--videoLeft">
+                                <img src="./img/one-piece-live-action.gif" alt="" width="466px" height="262px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_border"></div>
+                    <div class="main_item main_item--left container">
+                        <div class=" main_item_text">
+                            <h1>
+                                Oglądaj wszędzie
+                            </h1>
+                            <span>
+                                Oglądaj filmy, seriale i programy bez ograniczeń na telefonie, tablecie, laptopie i telewizorze.
+                            </span>
+                        </div>
+                        <div class="main_item--image">
+                        <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png" alt="">
+                        <div class="main_item--videoRight">
+                            <img src="./img/skibidi-toilet-toilet.gif" alt="" width="472px" height="270px">
+                        </div>
+                        </div>
+                    </div>
+                    <div class="main_border"></div>
+                    <div class="main_item main_item--right container">
+                        <div class=" main_item_text">
+                            <h1>
+                                Utwórz profile dla dzieci
+                            </h1>
+                            <span>
+                                Pozwól dzieciom przeżywać przygody w towarzystwie uwielbianych bohaterów — w specjalnej sekcji serwisu oferowanej bezpłatnie w ramach członkostwa.
+                            </span>
+                        </div>
+                        <div class="main_item--image">
+                        <img src="./img/forKids.jpg" alt="">
+
+                        </div>
+                    </div>
+                    <div class="main_border"></div>
                 </div>
             </div>
         </div>
