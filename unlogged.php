@@ -12,6 +12,10 @@
 <body>
     <?php
         session_start();
+        if(@$_COOKIE['is_logged'] == 'logged'){
+            header("Location: ./index.php?id={$_SESSION['id_login']}");
+            exit();
+        }
     ?>
     <nav style="position: static;">
         <div class="navLeft navItems flex">

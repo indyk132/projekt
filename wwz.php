@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2023.ico" type="image/icon type">
-    <link rel="stylesheet" href="./scss/navbar.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/movies.css">
     <title>World War Z | Netflix</title>
 </head>
 <body style="color: white;">
+    <?php
+        session_start();
+        include './connect.php';
+        $sql = "SELECT * FROM filmy";
+        $query = $conn -> prepare($sql);
+        $query->bind_param("ss", $loginToCheck, $hasloToCheck);
+        $query -> execute();
+        $result = $query->get_result();
+        
+        if ($result->num_rows > 0) {
+            
+        } else {
+            $loginErrorMessage = "Błąd";
+        }
+    ?>
     <nav>
         <div class="navLeft navItems flex">
             <ul class="navLeft_list  flex">
@@ -30,10 +46,11 @@
             </ul>
         </div>
     </nav>
-    <main style="height: 1000px; padding: 0 100px;">
-        <div class="background" style="height: 90%; width: 100%; ">
-            <div class="imagebg" style="background-image: url('./img/wwzBg.jpg'); height: 100%; width: 100%; "></div>
-            <div class="logoWwz"><img src="./img/wwzlogo.png" alt="logo" width="500px" height="200px" style="position: absolute; top: 40%; "></div>
+    <section class="movie_section">
+        <div class="movie_background">
+            <img src="./img/worldwarZ.png" alt="wwz" width="100%">
+            <div class="movie_hero_background">
+                <div class="logoWwz"><img src="./img/wwzlogo.png" alt="logo" width="500px" height="200px" style="position: absolute; top: 40%; "></div>
             <span style="position: absolute; top: 65%; color: white; font-size: 30px; "><strong>World War Z</strong></span>
             <div class="opis">
                 <span style="border-right: 1px solid; padding-right: 5px;">2013</span>
@@ -47,7 +64,12 @@
                 Kiedy wybuch epidemii zombie zagraża zniszczeniem całej ludzkości, były oficer śledczy z ONZ wyrusza w niebezpieczną podróż dookoła świata, by odnaleźć źródło wirusa.
                 <br> <br> W rolach głównych:Brad Pitt,Mireille Enos,Daniella Kertesz
             </p>
+            </div>
+            
         </div>
+    </section>
+    <main>
+        
         <div class="joinNow" style=" display: flex; align-items: center; height: 50px; background: linear-gradient(90deg,#333 5%,#181818 95%);">
             <svg  height="40px" style=" padding-left: 50px;" class="value-prop-logo" focusable="false" viewBox="225 0 552 1000" aria-hidden="true" data-uia="n-logo"><defs><radialGradient id="79c33f72-6cc7-4eab-9924-39e76a1b2976-a" r="75%" gradientTransform="matrix(.38 0 .5785 1 .02 0)"><stop offset="60%" stop-opacity=".3"></stop><stop offset="90%" stop-opacity=".05"></stop><stop offset="100%" stop-opacity="0"></stop></radialGradient></defs><path d="M225 0v1000c60-8 138-14 198-17V0H225" fill="#b1060e"></path><path d="M579 0v983c71 3 131 9 198 17V0H579" fill="#b1060e"></path><path d="M225 0v200l198 600V557l151 426c76 3 136 9 203 17V800L579 200v240L423 0H225" fill="url(#79c33f72-6cc7-4eab-9924-39e76a1b2976-a)"></path><path d="M225 0l349 983c76 3 136 9 203 17L423 0H225" fill="#e50914"></path></svg>
             <div style="width: 100%; display: flex; justify-content: space-between;  align-items: center; font-size: 20px; padding-left: 19px;"> 

@@ -1,0 +1,26 @@
+<div class="spiritedaway topMovies thrailer">
+                    <img class="thrailer--off" src="./img/spiritedaway.png" alt="spiritedaway" width="300px">
+                    
+                </div>
+                <div class="ShrekMovie topMovies thrailer">
+                   <img src="./img/Shrek.png" alt="Shrek" width="300px">
+                </div> 
+                <div class="nazachodzieMovie topMovies thrailer">
+                    <img src="./img/nazachodzie.png" alt="nazachodziebezzmian" width="300px">
+                </div>
+                <div class="klausMovie topMovies thrailer">
+                    <img src="./img/klaus.png" alt="klaus" width="300px">
+                </div>
+                <div class="spiritedaway topMovies thrailer">
+                    <img class="thrailer--off" src="./img/spiritedaway.png" alt="spiritedaway" width="300px">
+                    
+                </div>
+                <div class="ShrekMovie topMovies thrailer">
+                    <img src="./img/Shrek.png" alt="Shrek" width="300px">
+                </div>
+                <div class="nazachodzieMovie topMovies thrailer">
+                    <img src="./img/nazachodzie.png" alt="nazachodziebezzmian" width="300px">
+                </div>
+                <div class="klausMovie topMovies thrailer">
+                    <img src="./img/klaus.png" alt="klaus" width="300px">
+                </div>

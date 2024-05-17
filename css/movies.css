@@ -1,0 +1,26 @@
+.container {
+  padding: 0 100px;
+}
+
+.opis {
+  color: rgb(149, 147, 151);
+  position: absolute;
+  top: 70%;
+}
+
+.wiecejszczegolowA {
+  height: 100px;
+}
+
+.wiecejszczegolowA p {
+  margin-top: 1px;
+  width: 300px;
+}
+
+.grey {
+  color: grey;
+}
+
+.info {
+  z-index: 6;
+}/*# sourceMappingURL=movies.css.map */

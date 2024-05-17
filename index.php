@@ -13,6 +13,8 @@
 <body>
     <?php
         session_start();
+        include './connect.php';
+        $id = $_GET['id'];
         if(isset($_GET['id']) == false or $_COOKIE['is_logged'] != 'logged'){
             header("Location: ./unlogged.php");
             exit();
@@ -57,7 +59,7 @@
                 ?>
             </p>
             <div class="moviesTop">
-                <a href="./wwz.html">
+                <a href="./wwz.php">
                     <div class="wwzMovie topMovies  thrailer">
                        <img class="thrailer--off" src="./img/worldwarZ.png" alt="wwz" width="300px">
                        
@@ -112,32 +114,28 @@
             </div>
             <p class="myList">Moja Lista</p>
             <div class="moviesCenter">
-                <div class="spiritedaway topMovies thrailer">
-                    <img class="thrailer--off" src="./img/spiritedaway.png" alt="spiritedaway" width="300px">
-                    
-                </div>
-                <div class="ShrekMovie topMovies thrailer">
-                    <img src="./img/Shrek.png" alt="Shrek" width="300px">
-                </div>
-                <div class="nazachodzieMovie topMovies thrailer">
-                    <img src="./img/nazachodzie.png" alt="nazachodziebezzmian" width="300px">
-                </div>
-                <div class="klausMovie topMovies thrailer">
-                    <img src="./img/klaus.png" alt="klaus" width="300px">
-                </div>
-                <div class="spiritedaway topMovies thrailer">
-                    <img class="thrailer--off" src="./img/spiritedaway.png" alt="spiritedaway" width="300px">
-                    
-                </div>
-                <div class="ShrekMovie topMovies thrailer">
-                    <img src="./img/Shrek.png" alt="Shrek" width="300px">
-                </div>
-                <div class="nazachodzieMovie topMovies thrailer">
-                    <img src="./img/nazachodzie.png" alt="nazachodziebezzmian" width="300px">
-                </div>
-                <div class="klausMovie topMovies thrailer">
-                    <img src="./img/klaus.png" alt="klaus" width="300px">
-                </div>
+                <?php
+                
+                    $sql = 'SELECT f.tło FROM filmy f 
+                    JOIN favorites fa ON f.id_filmy = fa.id_filmy
+                    JOIN informacje i ON fa.id_konta = i.id_konta
+                    WHERE i.login = ?';
+                    $query = $conn -> prepare($sql);
+                    if ($query === false) {
+                        die("Error preparing the statement: " . $conn->error);
+                    }
+                    $query -> bind_param('s', $_GET['id']);
+                    $query -> execute();
+                    $result = $query -> get_result();
+
+                    if($result->num_rows > 0){
+                        while($row = $result -> fetch_assoc()){
+                            echo '<div class="nazachodzieMovie topMovies thrailer">
+                            <img src="'.$row['tło'].'" alt="nazachodziebezzmian" width="300px">
+                            </div>';
+                        }
+                    }
+                ?>
             </div>
         </div>
         <div class="mainCenter_2">
