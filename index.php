@@ -116,23 +116,18 @@
             <div class="moviesCenter">
                 <?php
                 
-                    $sql = 'SELECT f.tło FROM filmy f 
-                    JOIN favorites fa ON f.id_filmy = fa.id_filmy
-                    JOIN informacje i ON fa.id_konta = i.id_konta
-                    WHERE i.login = ?';
+                    $sql = 'SELECT f.tło, f.id FROM filmy f 
+                    JOIN favorites fa ON f.id = fa.film_id
+                    JOIN users u ON fa.user_id = u.id
+                    WHERE u.username = ?';
                     $query = $conn -> prepare($sql);
-                    if ($query === false) {
-                        die("Error preparing the statement: " . $conn->error);
-                    }
                     $query -> bind_param('s', $_GET['id']);
                     $query -> execute();
                     $result = $query -> get_result();
-
                     if($result->num_rows > 0){
                         while($row = $result -> fetch_assoc()){
-                            echo '<div class="nazachodzieMovie topMovies thrailer">
-                            <img src="'.$row['tło'].'" alt="nazachodziebezzmian" width="300px">
-                            </div>';
+                            $_SESSION['id_filmu'] = $row['id'];
+                            echo "<a href='./wwz.php?id=" . $row['id'] . "'><div class='nazachodzieMovie topMovies thrailer'> <img src='" . $row['tło'] . "' alt='nazachodziebezzmian' width='300px'></div></a>";
                         }
                     }
                 ?>

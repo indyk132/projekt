@@ -16,12 +16,13 @@
         if(isset($_POST['verify'])){
             $verify = $_POST['verify'];
             if ($verify == $_SESSION['kod'] ){ 
-                $sql = "INSERT INTO informacje (login, haslo, `email`) VALUES (?, ?, ?)";
+                $sql = "INSERT INTO users (username, password, `email`) VALUES (?, ?, ?)";
                 $query = $conn -> prepare($sql);
-                $query->bind_param("sss", $_SESSION['login'], $_SESSION['haslo'], $_SESSION['email']);
+                $query->bind_param("sss", $_SESSION['username'], $_SESSION['password'], $_SESSION['email']);
                 if ($query -> execute()) {
                         
                     header('Location: ./login.php');
+                    exit();
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
 

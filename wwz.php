@@ -9,21 +9,7 @@
     <title>World War Z | Netflix</title>
 </head>
 <body style="color: white;">
-    <?php
-        session_start();
-        include './connect.php';
-        $sql = "SELECT * FROM filmy";
-        $query = $conn -> prepare($sql);
-        $query->bind_param("ss", $loginToCheck, $hasloToCheck);
-        $query -> execute();
-        $result = $query->get_result();
-        
-        if ($result->num_rows > 0) {
-            
-        } else {
-            $loginErrorMessage = "Błąd";
-        }
-    ?>
+
     <nav>
         <div class="navLeft navItems flex">
             <ul class="navLeft_list  flex">

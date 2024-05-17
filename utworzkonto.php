@@ -41,14 +41,14 @@
                 include './connect.php';
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
-                    $login = $_POST['login'];
+                    $username = $_POST['username'];
                     $haslo = $_POST['haslo'];
                     $email = $_POST['email'];
-                    $loginToInsert = mysqli_real_escape_string($conn, $login);
+                    $usernameToInsert = mysqli_real_escape_string($conn, $username);
                     $hasloToInsert = mysqli_real_escape_string($conn, $haslo);
                     $emailToInsert = mysqli_real_escape_string($conn, $email);
-                    $_SESSION['login'] = $loginToInsert;
-                    $_SESSION['haslo'] = $hasloToInsert;
+                    $_SESSION['username'] = $usernameToInsert;
+                    $_SESSION['password'] = $passwordToInsert;
                     $_SESSION['email'] = $emailToInsert;
 
                     
@@ -73,8 +73,8 @@
             <main>
                 <form action="utworzkonto.php" method="post">
                     <div class="inputs">
-                        <label for="login">Login</label>
-                        <input type="text" placeholder="Podaj Login" name="login">
+                        <label for="username">username</label>
+                        <input type="text" placeholder="Username" name="username">
                         <label for="haslo">Hasło</label>
                         <input type="password" placeholder="Podaj hasło" name="haslo">
                         <label for="email">e-mail</label>
