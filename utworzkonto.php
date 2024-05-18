@@ -42,10 +42,10 @@
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
                     $username = $_POST['username'];
-                    $haslo = $_POST['haslo'];
+                    $password = $_POST['password'];
                     $email = $_POST['email'];
                     $usernameToInsert = mysqli_real_escape_string($conn, $username);
-                    $hasloToInsert = mysqli_real_escape_string($conn, $haslo);
+                    $passwordToInsert = mysqli_real_escape_string($conn, $password);
                     $emailToInsert = mysqli_real_escape_string($conn, $email);
                     $_SESSION['username'] = $usernameToInsert;
                     $_SESSION['password'] = $passwordToInsert;
@@ -75,8 +75,8 @@
                     <div class="inputs">
                         <label for="username">username</label>
                         <input type="text" placeholder="Username" name="username">
-                        <label for="haslo">Hasło</label>
-                        <input type="password" placeholder="Podaj hasło" name="haslo">
+                        <label for="password">Hasło</label>
+                        <input type="password" placeholder="Podaj hasło" name="password">
                         <label for="email">e-mail</label>
                         <input type="text" placeholder="Podaj email" name="email">
                         <input type="submit" value="utwórz konto">

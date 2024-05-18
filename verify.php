@@ -13,14 +13,14 @@
     <?php
         session_start();
         include './connect.php';
+        echo $_SESSION['username'], $_SESSION['password'], $_SESSION['email'];
         if(isset($_POST['verify'])){
             $verify = $_POST['verify'];
             if ($verify == $_SESSION['kod'] ){ 
                 $sql = "INSERT INTO users (username, password, `email`) VALUES (?, ?, ?)";
                 $query = $conn -> prepare($sql);
                 $query->bind_param("sss", $_SESSION['username'], $_SESSION['password'], $_SESSION['email']);
-                if ($query -> execute()) {
-                        
+                if ($query -> execute()) {         
                     header('Location: ./login.php');
                     exit();
                 } else {
