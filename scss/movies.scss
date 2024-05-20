@@ -75,14 +75,20 @@ nav{
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
-
+.movie__container{
+    // display: flex;
+    width: 20%;
+    font-size: 20px;
+}
 .movie__logo {
     width: 100%;
+    margin-top: 100px;
 }
 
 .movie__title {
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    line-height: 40px;
     font-weight: 700;
     color: #E5E5E5;
 }
@@ -91,12 +97,18 @@ nav{
     display: flex;
     gap: 8px;
     align-items: center;
+    line-height: 40px;
+
     justify-content: flex-start;
-    color: #E5E5E5;
+    font-size: 1.3rem;
+    color: #c2c2c2;
 }
 
+.movie__description--container{
+    width: 40%;
+}
 .movie__description {
-    font-size: 12px;
+    font-size: 1.1rem;
     color: #E5E5E5;
 }
 

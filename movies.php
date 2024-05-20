@@ -42,18 +42,28 @@
         <div class="movie__background">
             <img src='<?php echo $row["tło"]; ?>' alt="wwz" height="100%" width="100%">
             <div class="movie__hero-background">
-                <div class="movie__logo"><img src='<?php echo "$row[logo]" ?>' alt="logo" width='450px' height="200px"></div>
-                <span class="movie__title"><strong><?php echo $row['tytuł']?></strong></span>
-                <div class="movie__details">
-                    <span><?php echo substr($row['data_produkcji'], 0, 4)?></span>
-                    <span><span><?php echo $row['wiek']?>+</span></span>
-                    <span>1 godz. 57min</span>
-                    <span>Akcja</span>
+                <div class="movie__logo"><img src='<?php echo "$row[logo]" ?>' alt="logo" width='500px' height="200px"></div>
+                    <span class="movie__title"><strong><?php echo $row['tytuł']?></strong></span>
+                    <div class="movie__details">
+                        <span><?php echo substr($row['data_produkcji'], 0, 4)?></span>
+                        <span><?php echo $row['wiek']?>+</span>
+                        <span>
+                            <?php 
+                                $minuty = ($row['czas_trwania'] / 60)% 60;
+                                $godziny = floor(($row['czas_trwania'] / 60) - $minuty) / 60;
+                                echo $godziny.'h '.$minuty.'min.' ; 
+                            ?>
+                        </span>
+                        <span><?php echo $row['gatunek'] ?></span>
+                    </div>
+                    <div class="movie__description--container">
+                        <p class="movie__description movie__info">
+                            <?php echo $row['opis'].'<br><br>'; ?> 
+                            <?php echo 'W rolach głównych: '.$row['główne_role'];?>
+                        </p>
+                    </div>
                 </div>
-                <p class="movie__description movie__info">
-                    Kiedy wybuch epidemii zombie zagraża zniszczeniem całej ludzkości, były oficer śledczy z ONZ wyrusza w niebezpieczną podróż dookoła świata, by odnaleźć źródło wirusa.
-                    <br><br> W rolach głównych: Brad Pitt, Mireille Enos, Daniella Kertesz
-                </p>
+                
             </div>
         </div>
     </section>
