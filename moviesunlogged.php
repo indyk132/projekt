@@ -13,16 +13,10 @@
     <?php
         session_start();
         include './connect.php';
-        if (!isset($_SESSION['id_user']) || $_COOKIE['is_logged'] != 'logged') {
+        if(isset($_SESSION['id_user']) == false or $_COOKIE['is_logged'] != 'logged'){
             header("Location: ./moviesunlogged.php");
             exit();
         }
-        if (!isset($_SESSION['id_filmu'])) {
-            header("Location: ./index.php?id={$_SESSION['id_user']}");
-            exit();
-        }
-        
-
         $sql = 'SELECT * FROM Filmy WHERE id = ?';
         $query = $conn -> prepare($sql);
         $query -> bind_param('i', $_GET['id_filmu']);

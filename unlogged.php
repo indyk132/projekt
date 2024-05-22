@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="./css/unlogged.css">
 </head>
 <body>
-    <?php
+        <?php
         session_start();
-        if(@$_COOKIE['is_logged'] == 'logged'){
-            header("Location: ./index.php?id={$_SESSION['id_login']}");
+        if (isset($_COOKIE['is_logged']) && $_COOKIE['is_logged'] == 'logged' && isset($_SESSION['id_user'])) {
+            header("Location: ./homePage.php?id={$_SESSION['id_user']}");
             exit();
         }
-    ?>
+        ?>
+
     <nav style="position: static;">
         <div class="navLeft navItems flex">
             <ul class="navLeft_list  flex">
@@ -31,7 +32,7 @@
         <div class="navRight flex">
             <ul class="navRight_list">
                 <span style="font-size: 15px;">TYSIĄCE FILMÓW, SERIALI I PROGRAMÓW &nbsp;</span>
-                <a href='login.php'> 
+                <a href='./login.php'> 
                 <button style=" color: white; background-color: red; border: 1px solid grey;   padding: 9px 13px; border-radius: 4%; margin-right: 10px;">
                     ZALOGUJ SIĘ
                 </button>

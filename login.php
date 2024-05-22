@@ -31,10 +31,12 @@
     session_start();
     $loginErrorMessage = "";
 
-    if(isset($_COOKIE['is_logged']) && $_COOKIE['is_logged'] == 'logged') {
-        header("Location: ./index.php?id={$_SESSION['id_username']}");
+    if (isset($_COOKIE['is_logged']) && $_COOKIE['is_logged'] == 'logged') {
+        header("Location: ./homePage.php?id={$_SESSION['id_user']}");
         exit();
     }
+
+
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['username'] ?? null;
@@ -50,12 +52,11 @@
         $query->execute();
         $result = $query->get_result();
         if ($result->num_rows > 0) {
-            setcookie('is_logged', 'logged', time() + (86400 * 30));
+            setcookie('is_logged', 'logged', time() + 3600);
             
             $row = $result->fetch_assoc();
-            $_SESSION['id_username'] = $row['username'];
-            
-            header("Location: ./index.php?id={$row['username']}");
+            $_SESSION['username'] = $row['username'];
+            header("Location: ./homePage.php?id_user={$row['id']}");
             exit();
             
         } else {
