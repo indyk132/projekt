@@ -12,10 +12,6 @@
 <body>
         <?php
         session_start();
-        if (isset($_COOKIE['is_logged']) && $_COOKIE['is_logged'] == 'logged' && isset($_SESSION['id_user'])) {
-            header("Location: ./homePage.php?id={$_SESSION['id_user']}");
-            exit();
-        }
         ?>
 
     <nav style="position: static;">

@@ -14,10 +14,6 @@
     <?php
         session_start();
         include './connect.php';
-        if (!isset($_SESSION['id_user']) || $_COOKIE['is_logged'] != 'logged') {
-            header("Location: ./unlogged.php");
-            exit();
-        }
     ?>
     <div class="background"> 
     </div>

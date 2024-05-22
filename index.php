@@ -1,40 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-        <?php
-        $request = $_SERVER['REQUEST_URI'];
-        
-        $request = strtok($request, '?');
-        
-        function route($path, $callback) {
-            global $request;
-            if ($path === $request) {
-                $callback();
-                exit();
+<?php
+session_start();
+function uriParse() {
+
+    $uri = trim($_SERVER['REQUEST_URI'], '/');
+    $uri_segments = array_filter(explode('/', $uri));
+    return [
+        'segments' => $uri_segments,
+        'segment_count' => count($uri_segments)
+    ];
+}
+
+function getView($view) {
+    echo '<html>';
+        echo '<head>';
+            include './template/head.php';
+        echo '</head>';
+    
+        echo '<body>';
+            $view_file = './views/' . $view . '.php';
+            if(file_exists($view_file)){
+                include $view_file;
+            }else{
+                echo "view not found" . htmlspecialchars($view);
             }
+        echo '</body>';
+    echo '</html>';
+}
+
+function router() {
+    $parsed_uri = uriParse();
+
+    if ($parsed_uri['segment_count'] === 0 || $parsed_uri['segments'][0] === 'projekt') {
+        if(isset($_SESSION['is_logged']) && $_SESSION['is_logged']){
+            getView('homePage?id='. $_SESSION['id_user']);
+        }else{
+            getView('login');
         }
         
-        route('/projekt/homePage', function() {
-            include './homePage.php';
-        });
+    } else {
+        $view = $parsed_uri['segments'][1] ?? $parsed_uri['segments'][0];
+        getView($view);
         
-        route('/projekt/movies', function() {
-            include './movies.php';
-        });
-        
-        route('/projekt/unlogged', function() {
-            include './unlogged.php';
-        });
-        
-        http_response_code(404);
-        echo '404 - Strona nie znaleziona';
-        
-        ?>
-    
-</body>
-</html>
+    }
+}
+router();
+?>
